@@ -1,13 +1,16 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
 import { useParams } from "react-router-dom";
 import { getPost } from "../Helpers/services";
+import React, { useEffect, useState } from "react";
 
 export default function EditPost({ posts, editPost }) {
+  const [titleInput, setTitleInput] = useState("");
+
   let params = useParams();
-  console.log({ params });
   let post = getPost(parseInt(params.postId), posts);
+
+  useEffect(() => setTitleInput(post.title), [post.title]);
 
   return (
     <Container maxWidth="sm" sx={{ pt: "6rem" }}>
@@ -23,7 +26,8 @@ export default function EditPost({ posts, editPost }) {
             name="title"
             variant="outlined"
             type="text"
-            value={post.title}
+            value={titleInput}
+            onChange={(e) => setTitleInput(e.target.value)}
           />
           <TextField
             fullWidth

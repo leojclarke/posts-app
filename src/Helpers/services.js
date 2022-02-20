@@ -19,4 +19,9 @@ function getPost(id, posts) {
   return posts.find((post) => post.id === id);
 }
 
-export { getData, setLocal, getLocal, getPost };
+function findPostByIndex(id, posts) {
+  const postIndex = posts.map((post) => post.id).indexOf(id);
+  return postIndex;
+}
+
+export { getData, setLocal, getLocal, getPost, findPostByIndex };
