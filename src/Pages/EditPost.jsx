@@ -27,9 +27,7 @@ export default function EditPost({ posts, editPost }) {
       body: form.body.value,
     };
     const editedPosts = [...posts];
-    console.log({ editedPost });
     editedPosts[postIdx] = editedPost;
-    console.log({ editedPosts });
     editPost(editedPosts);
   };
 

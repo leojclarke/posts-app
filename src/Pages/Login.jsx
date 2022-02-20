@@ -17,7 +17,7 @@ export default function Login({ users }) {
     const login = e.target;
     const user = login.username.value;
 
-    users.filter((u) =>
+    users.find((u) =>
       u.username === user ? navigate("/") : console.log("WRONG USER")
     );
   }
