@@ -1,4 +1,4 @@
-import { Button, Container, TextField } from "@mui/material";
+import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -23,17 +23,10 @@ export default function AddPost({ posts, addPost }) {
   };
 
   return (
-    <Container
-      maxWidth="sm"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "70vh",
-        gap: 2,
-      }}
-    >
+    <Container maxWidth="sm" sx={{ pt: "6rem" }}>
+      <Typography variant="h4" gutterBottom>
+        ADD POST
+      </Typography>
       <form onSubmit={(e) => handleAddNewPost(e)}>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
           <TextField
