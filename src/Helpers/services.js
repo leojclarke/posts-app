@@ -15,4 +15,8 @@ function getLocal(name) {
   return JSON.parse(localStorage.getItem(name));
 }
 
-export { getData, setLocal, getLocal };
+function getPost(id, posts) {
+  return posts.find((post) => post.id === id);
+}
+
+export { getData, setLocal, getLocal, getPost };
