@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import Header from "./Components/Header";
 import { getData, getLocal, setLocal } from "./Helpers/services";
 import AddPost from "./Pages/AddPost";
 import EditPost from "./Pages/EditPost";
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <Routes>
         <Route
           path="/"
