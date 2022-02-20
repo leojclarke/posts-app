@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { getData, getLocal, setLocal } from "./Helpers/services";
+import Login from "./Pages/Login";
 import Posts from "./Pages/Posts";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           path="/"
           element={<Posts posts={posts} deletePost={handlePostDelete} />}
         />
+        <Route path="login" element={<Login />} />
       </Routes>
     </>
   );
