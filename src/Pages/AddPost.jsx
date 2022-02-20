@@ -2,7 +2,22 @@ import { Button, Container, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 
-export default function AddPost() {
+export default function AddPost({ posts, addPost }) {
+  const handleAddNewPost = (e) => {
+    e.preventDefault();
+
+    const newPosts = [
+      ...posts,
+      {
+        id: Math.random() * Math.pow(10, 5),
+        userId: Math.floor(Math.random() * 11),
+        title: e.target.title,
+        body: e.target.body,
+      },
+    ];
+    addPost(newPosts);
+  };
+
   return (
     <Container
       maxWidth="sm"
@@ -15,7 +30,7 @@ export default function AddPost() {
         gap: 2,
       }}
     >
-      <form>
+      <form onSubmit={(e) => handleAddNewPost(e)}>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
           <TextField
             fullWidth

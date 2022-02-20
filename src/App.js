@@ -29,6 +29,10 @@ function App() {
     setPosts(newPosts);
   };
 
+  const handlePostAdd = (newPosts) => {
+    setPosts(newPosts);
+  };
+
   return (
     <>
       <Routes>
@@ -37,7 +41,10 @@ function App() {
           element={<Posts posts={posts} deletePost={handlePostDelete} />}
         />
         <Route path="login" element={<Login users={users} />} />
-        <Route path="add" element={<AddPost />} />
+        <Route
+          path="add"
+          element={<AddPost posts={posts} addPost={handlePostAdd} />}
+        />
       </Routes>
     </>
   );
