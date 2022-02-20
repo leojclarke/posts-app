@@ -1,35 +1,34 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useNavigate, useParams } from "react-router-dom";
-import { findPostByIndex, getPost } from "../Helpers/services";
+import { useParams } from "react-router-dom";
+import { getPost } from "../Helpers/services";
 import React, { useEffect, useState } from "react";
 
 export default function EditPost({ posts, editPost }) {
   const [titleInput, setTitleInput] = useState("");
 
-  const navigate = useNavigate();
-
   let params = useParams();
   let post = getPost(parseInt(params.postId), posts);
+
+  let postIdx = posts.indexOf(post);
 
   useEffect(() => setTitleInput(post.title), [post.title]);
 
   const handlePostEditSubmit = (e) => {
     e.preventDefault();
-    const postIdx = findPostByIndex(params.postId, posts);
-    const post = e.target;
+
+    const form = e.target;
     const editedPost = {
-      ...posts[postIdx],
-      title: post.title.value,
-      body: post.text.value,
+      id: post.id,
+      userId: post.userId,
+      title: form.title.value,
+      body: form.body.value,
     };
-    const newPosts = [
-      ...posts.slice(0, postIdx),
-      editedPost,
-      ...posts.slice(postIdx + 1),
-    ];
-    editPost(newPosts);
-    navigate("/");
+    const editedPosts = [...posts];
+    console.log({ editedPost });
+    editedPosts[postIdx] = editedPost;
+    console.log({ editedPosts });
+    editPost(editedPosts);
   };
 
   return (
@@ -37,7 +36,7 @@ export default function EditPost({ posts, editPost }) {
       <Typography variant="h4" gutterBottom>
         EDIT POST
       </Typography>
-      <form onSubmit={(e) => handlePostEditSubmit}>
+      <form onSubmit={(e) => handlePostEditSubmit(e)}>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
           <TextField
             fullWidth

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { getData, getLocal, setLocal } from "./Helpers/services";
 import AddPost from "./Pages/AddPost";
 import EditPost from "./Pages/EditPost";
@@ -25,6 +25,8 @@ function App() {
   useEffect(() => setLocal("users", users), [users]);
   useEffect(() => setLocal("comments", comments), [comments]);
 
+  const navigate = useNavigate();
+
   const handlePostDelete = (id) => {
     const newPosts = posts.filter((post) => post.id !== id);
     setPosts(newPosts);
@@ -34,8 +36,9 @@ function App() {
     setPosts(newPosts);
   };
 
-  const handlePostEdit = () => {
-    console.log("edited post");
+  const handlePostEdit = (editedPosts) => {
+    setPosts(editedPosts);
+    navigate("/");
   };
 
   return (
