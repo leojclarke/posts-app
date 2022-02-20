@@ -16,7 +16,9 @@ export default function Post({ post, deletePost }) {
       </CardContent>
       <CardActions>
         <Button size="small">Comment</Button>
-        <Button size="small">Edit</Button>
+        <Button size="small" onClick={() => console.log("you clicked: ", id)}>
+          Edit
+        </Button>
         <Button size="small" onClick={() => deletePost(id)}>
           Delete
         </Button>

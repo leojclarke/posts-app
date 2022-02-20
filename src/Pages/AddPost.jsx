@@ -11,7 +11,7 @@ export default function AddPost({ posts, addPost }) {
     const post = e.target;
     const newPosts = [
       {
-        id: Math.random() * Math.pow(10, 5),
+        id: Math.round(Math.random() * Math.pow(10, 5)),
         userId: Math.floor(Math.random() * 11),
         title: post.title.value,
         body: post.body.value,
