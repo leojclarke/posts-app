@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { getData, getLocal, setLocal } from "./Helpers/services";
+import AddPost from "./Pages/AddPost";
 import Login from "./Pages/Login";
 import Posts from "./Pages/Posts";
 
@@ -28,6 +29,10 @@ function App() {
     setPosts(newPosts);
   };
 
+  const handlePostAdd = (newPosts) => {
+    setPosts(newPosts);
+  };
+
   return (
     <>
       <Routes>
@@ -36,6 +41,10 @@ function App() {
           element={<Posts posts={posts} deletePost={handlePostDelete} />}
         />
         <Route path="login" element={<Login users={users} />} />
+        <Route
+          path="add"
+          element={<AddPost posts={posts} addPost={handlePostAdd} />}
+        />
       </Routes>
     </>
   );
