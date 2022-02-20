@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 
 export default function EditPost({ posts, editPost }) {
   const [titleInput, setTitleInput] = useState("");
+  const [bodyInput, setBodyInput] = useState("");
 
   let params = useParams();
   let post = getPost(parseInt(params.postId), posts);
@@ -13,6 +14,7 @@ export default function EditPost({ posts, editPost }) {
   let postIdx = posts.indexOf(post);
 
   useEffect(() => setTitleInput(post.title), [post.title]);
+  useEffect(() => setBodyInput(post.body), [post.body]);
 
   const handlePostEditSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +60,8 @@ export default function EditPost({ posts, editPost }) {
             multiline
             maxRows="3"
             minRows="3"
-            value={post.body}
+            value={bodyInput}
+            onChange={(e) => setBodyInput(e.target.value)}
           />
           <Button variant="contained" type="submit">
             SAVE POST
