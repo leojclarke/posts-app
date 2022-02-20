@@ -1,21 +1,25 @@
 import { Button, Container, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddPost({ posts, addPost }) {
+  const navigate = useNavigate();
+
   const handleAddNewPost = (e) => {
     e.preventDefault();
-
+    const post = e.target;
     const newPosts = [
-      ...posts,
       {
         id: Math.random() * Math.pow(10, 5),
         userId: Math.floor(Math.random() * 11),
-        title: e.target.title,
-        body: e.target.body,
+        title: post.title.value,
+        body: post.body.value,
       },
+      ...posts,
     ];
     addPost(newPosts);
+    navigate("/");
   };
 
   return (
