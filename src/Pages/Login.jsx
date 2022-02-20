@@ -1,7 +1,20 @@
 import { Avatar, Button, Container, TextField } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ users }) {
+  const navigate = useNavigate();
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const login = e.target;
+    const user = login.username.value;
+
+    users.filter((u) =>
+      u.username === user ? navigate("/") : console.log("WRONG USER")
+    );
+  }
+
   return (
     <Container
       maxWidth="sm"
@@ -15,7 +28,7 @@ export default function Login() {
       }}
     >
       <Avatar>M</Avatar>
-      <form>
+      <form onSubmit={(e) => handleLogin(e)} autoComplete="false">
         <TextField
           fullWidth
           placeholder="username"
@@ -23,6 +36,7 @@ export default function Login() {
           name="username"
           variant="outlined"
           type="text"
+          error={false}
         />
         <TextField
           fullWidth
@@ -31,6 +45,7 @@ export default function Login() {
           name="password"
           variant="outlined"
           type="password"
+          error={false}
         />
         <Button variant="contained" type="submit">
           LOGIN

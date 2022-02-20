@@ -35,7 +35,7 @@ function App() {
           path="/"
           element={<Posts posts={posts} deletePost={handlePostDelete} />}
         />
-        <Route path="login" element={<Login />} />
+        <Route path="login" element={<Login users={users} />} />
       </Routes>
     </>
   );
