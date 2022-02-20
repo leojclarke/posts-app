@@ -15,4 +15,13 @@ function getLocal(name) {
   return JSON.parse(localStorage.getItem(name));
 }
 
-export { getData, setLocal, getLocal };
+function getPost(id, posts) {
+  return posts.find((post) => post.id === id);
+}
+
+function findPostByIndex(id, posts) {
+  const postIndex = posts.map((post) => post.id).indexOf(id);
+  return postIndex;
+}
+
+export { getData, setLocal, getLocal, getPost, findPostByIndex };
