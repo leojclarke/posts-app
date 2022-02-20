@@ -1,8 +1,14 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useParams } from "react-router-dom";
+import { getPost } from "../Helpers/services";
 
-export default function EditPost() {
+export default function EditPost({ posts }) {
+  let params = useParams();
+  console.log({ params });
+  let post = getPost(parseInt(params.postId), posts);
+
   return (
     <Container maxWidth="sm" sx={{ pt: "6rem" }}>
       <Typography variant="h4" gutterBottom>
@@ -17,6 +23,7 @@ export default function EditPost() {
             name="title"
             variant="outlined"
             type="text"
+            value={post.title}
           />
           <TextField
             fullWidth
@@ -28,6 +35,7 @@ export default function EditPost() {
             multiline
             maxRows="3"
             minRows="3"
+            value={post.body}
           />
           <Button variant="contained" type="submit">
             SAVE POST
