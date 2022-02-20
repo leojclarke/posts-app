@@ -34,6 +34,10 @@ function App() {
     setPosts(newPosts);
   };
 
+  const handlePostEdit = () => {
+    console.log("edited post");
+  };
+
   return (
     <>
       <Routes>
@@ -46,7 +50,10 @@ function App() {
           path="add"
           element={<AddPost posts={posts} addPost={handlePostAdd} />}
         />
-        <Route path=":postId" element={<EditPost />} />
+        <Route
+          path="/edit/:postId"
+          element={<EditPost posts={posts} editPost={handlePostEdit} />}
+        />
       </Routes>
     </>
   );

@@ -4,7 +4,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { getPost } from "../Helpers/services";
 
-export default function EditPost({ posts }) {
+export default function EditPost({ posts, editPost }) {
   let params = useParams();
   console.log({ params });
   let post = getPost(parseInt(params.postId), posts);

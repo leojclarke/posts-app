@@ -4,8 +4,11 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Post({ post, deletePost }) {
+  const navigate = useNavigate();
+
   const { id, title, body } = post;
 
   return (
@@ -16,7 +19,7 @@ export default function Post({ post, deletePost }) {
       </CardContent>
       <CardActions>
         <Button size="small">Comment</Button>
-        <Button size="small" onClick={() => console.log("you clicked: ", id)}>
+        <Button size="small" onClick={() => navigate("/edit/" + id)}>
           Edit
         </Button>
         <Button size="small" onClick={() => deletePost(id)}>
