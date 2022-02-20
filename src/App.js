@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { getData, getLocal, setLocal } from "./Helpers/services";
 import AddPost from "./Pages/AddPost";
+import EditPost from "./Pages/EditPost";
 import Login from "./Pages/Login";
 import Posts from "./Pages/Posts";
 
@@ -45,6 +46,7 @@ function App() {
           path="add"
           element={<AddPost posts={posts} addPost={handlePostAdd} />}
         />
+        <Route path=":postId" element={<EditPost />} />
       </Routes>
     </>
   );
